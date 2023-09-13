@@ -1,65 +1,32 @@
 console.log("Coding Challenge #7");
-
-// var obj = [{
-//     fullName: "Mark",
-//     mass: 78,
-//     height: 1.69,
-// }, {
-//     fullName: "John",
-//     mass: 92,
-//     height: 1.95
-// }]
-
-
-// var calcBMI = (obj) => {
-//     return {
-//         fullName: obj.fullName,
-//         mass: obj.mass,
-//         height: obj.height,
-//         BMI: obj.mass / (obj.height * obj.height)
-
-//     }
-// }
-
-// var runResult = obj.map(calcBMI);
-// console.log(runResult)\
-
-
-
-var calcBMI = (obj) => {
-    return {
-        BMI: obj.mass / (obj.height * obj.height)
-
-    }
+const calcBMI = (mass, height) => {
+    return mass / (height * height);
 }
+
 var MarkObj = {
     fullName: "Mark",
     mass: 78,
     height: 1.69,
-    BMI: calcBMI
+    BMI: calcBMI()
 }
 
 var JohnObj = {
     fullName: "John",
     mass: 92,
     height: 1.95,
-    BMI: calcBMI
+    BMI: calcBMI()
 }
 
-var compareBMI = (MarkObj, JohnObj) => {
-    if (MarkObj.BMI > JohnObj.BMI) {
-        console.log('BMI cua Mark cao hon John');
-    } else {
-        console.log('BMI cua Mark thap hon John');
-    }
+var resultBMIMark = calcBMI(MarkObj.mass, MarkObj.height);
+console.log(`BMI cua Mark: ${resultBMIMark.toFixed(2)}`);
+
+var resultBMIJohn = calcBMI(JohnObj.mass, JohnObj.height);
+console.log(`BMI cua John: ${resultBMIJohn.toFixed(2)}`);
+
+
+if (resultBMIMark > resultBMIJohn) {
+    console.log(`Chi so BMI cua Mark(${resultBMIMark.toFixed(2)}) cao hon cua John (${resultBMIJohn.toFixed(2)})!`);
 }
-
-var result1 = calcBMI(MarkObj);
-console.log("BMI cua Mark: ");
-console.log(result1);
-
-var result2 = calcBMI(JohnObj);
-console.log("BMI cua John: ");
-console.log(result2);
-
-compareBMI(MarkObj, JohnObj);
+else {
+    console.log(`Chi so BMI cua Mark(${resultBMIMark.toFixed(2)}) thap hon cua John (${resultBMIJohn.toFixed(2)})!`);
+}
